@@ -1,10 +1,9 @@
 # TLS Echo Server
-
-Class: CSE544
-Name:: Ashita
-Roll No: 2019028
-Type: Assignment  4
-
+The echo server receives the packets, decrypts them, converts the character to upper case and
+send it back, encrypted, using the same TLS connection that was initiated by the
+client (to send the string).
+The server uses a self-signed X.509 certificate, i.e. the server creates a fake CA and fake root CA certificate. This fake CA signs the server’s own certificate signing request (CSR).
+The programs uses OpenSSL library’s TLSv1.2 methods, i.e. you must ensure that TLSv1.2 is being used by the client and the server. Further, only __ephemeral DH key exchange__, or allied methods are used for the connection.
 # Creating certificates and keys
 
 1. Generate private key for CA : `openssl genrsa 2048 > ca-key.pem`
